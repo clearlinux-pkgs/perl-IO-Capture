@@ -4,11 +4,11 @@
 #
 Name     : perl-IO-Capture
 Version  : 0.05
-Release  : 9
+Release  : 10
 URL      : https://cpan.metacpan.org/authors/id/R/RE/REYNOLDS/IO-Capture-0.05.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RE/REYNOLDS/IO-Capture-0.05.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libi/libio-capture-perl/libio-capture-perl_0.05-4.debian.tar.xz
-Summary  : No detailed summary available
+Summary  : Abstract Base Class to build modules to capture output.
 Group    : Development/Tools
 License  : Artistic-1.0 GPL-1.0
 Requires: perl-IO-Capture-license = %{version}-%{release}
@@ -30,6 +30,7 @@ To build and install this module, follow the standard procedures:
 Summary: dev components for the perl-IO-Capture package.
 Group: Development
 Provides: perl-IO-Capture-devel = %{version}-%{release}
+Requires: perl-IO-Capture = %{version}-%{release}
 
 %description dev
 dev components for the perl-IO-Capture package.
@@ -48,7 +49,7 @@ license components for the perl-IO-Capture package.
 cd ..
 %setup -q -T -D -n IO-Capture-0.05 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/IO-Capture-0.05/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/IO-Capture-0.05/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
