@@ -4,14 +4,15 @@
 #
 Name     : perl-IO-Capture
 Version  : 0.05
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/R/RE/REYNOLDS/IO-Capture-0.05.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RE/REYNOLDS/IO-Capture-0.05.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libi/libio-capture-perl/libio-capture-perl_0.05-4.debian.tar.xz
-Summary  : Abstract Base Class to build modules to capture output.
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Artistic-1.0 GPL-1.0
 Requires: perl-IO-Capture-license = %{version}-%{release}
+Requires: perl-IO-Capture-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -44,18 +45,28 @@ Group: Default
 license components for the perl-IO-Capture package.
 
 
+%package perl
+Summary: perl components for the perl-IO-Capture package.
+Group: Default
+Requires: perl-IO-Capture = %{version}-%{release}
+
+%description perl
+perl components for the perl-IO-Capture package.
+
+
 %prep
 %setup -q -n IO-Capture-0.05
-cd ..
-%setup -q -T -D -n IO-Capture-0.05 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libio-capture-perl_0.05-4.debian.tar.xz
+cd %{_builddir}/IO-Capture-0.05
 mkdir -p deblicense/
-cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/IO-Capture-0.05/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/IO-Capture-0.05/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -65,7 +76,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -74,7 +85,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-IO-Capture
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-IO-Capture/deblicense_copyright
+cp %{_builddir}/IO-Capture-0.05/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-IO-Capture/45bafea63a1ecddcfcc1e22844930ca8f7f56ccb
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -87,11 +98,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/IO/Capture.pm
-/usr/lib/perl5/vendor_perl/5.28.2/IO/Capture/Overview.pod
-/usr/lib/perl5/vendor_perl/5.28.2/IO/Capture/Stderr.pm
-/usr/lib/perl5/vendor_perl/5.28.2/IO/Capture/Stdout.pm
-/usr/lib/perl5/vendor_perl/5.28.2/IO/Capture/Tie_STDx.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -103,4 +109,12 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-IO-Capture/deblicense_copyright
+/usr/share/package-licenses/perl-IO-Capture/45bafea63a1ecddcfcc1e22844930ca8f7f56ccb
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/IO/Capture.pm
+/usr/lib/perl5/vendor_perl/5.30.1/IO/Capture/Overview.pod
+/usr/lib/perl5/vendor_perl/5.30.1/IO/Capture/Stderr.pm
+/usr/lib/perl5/vendor_perl/5.30.1/IO/Capture/Stdout.pm
+/usr/lib/perl5/vendor_perl/5.30.1/IO/Capture/Tie_STDx.pm
