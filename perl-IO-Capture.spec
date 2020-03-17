@@ -4,7 +4,7 @@
 #
 Name     : perl-IO-Capture
 Version  : 0.05
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/R/RE/REYNOLDS/IO-Capture-0.05.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RE/REYNOLDS/IO-Capture-0.05.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libi/libio-capture-perl/libio-capture-perl_0.05-4.debian.tar.xz
@@ -85,7 +85,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-IO-Capture
-cp %{_builddir}/IO-Capture-0.05/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-IO-Capture/45bafea63a1ecddcfcc1e22844930ca8f7f56ccb
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-IO-Capture/45bafea63a1ecddcfcc1e22844930ca8f7f56ccb
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -113,8 +113,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/IO/Capture.pm
-/usr/lib/perl5/vendor_perl/5.30.1/IO/Capture/Overview.pod
-/usr/lib/perl5/vendor_perl/5.30.1/IO/Capture/Stderr.pm
-/usr/lib/perl5/vendor_perl/5.30.1/IO/Capture/Stdout.pm
-/usr/lib/perl5/vendor_perl/5.30.1/IO/Capture/Tie_STDx.pm
+/usr/lib/perl5/vendor_perl/5.30.2/IO/Capture.pm
+/usr/lib/perl5/vendor_perl/5.30.2/IO/Capture/Overview.pod
+/usr/lib/perl5/vendor_perl/5.30.2/IO/Capture/Stderr.pm
+/usr/lib/perl5/vendor_perl/5.30.2/IO/Capture/Stdout.pm
+/usr/lib/perl5/vendor_perl/5.30.2/IO/Capture/Tie_STDx.pm
