@@ -113,8 +113,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.32.1/IO/Capture.pm
-/usr/lib/perl5/vendor_perl/5.32.1/IO/Capture/Overview.pod
-/usr/lib/perl5/vendor_perl/5.32.1/IO/Capture/Stderr.pm
-/usr/lib/perl5/vendor_perl/5.32.1/IO/Capture/Stdout.pm
-/usr/lib/perl5/vendor_perl/5.32.1/IO/Capture/Tie_STDx.pm
+/usr/lib/perl5/vendor_perl/5.34.0/IO/Capture.pm
+/usr/lib/perl5/vendor_perl/5.34.0/IO/Capture/Overview.pod
+/usr/lib/perl5/vendor_perl/5.34.0/IO/Capture/Stderr.pm
+/usr/lib/perl5/vendor_perl/5.34.0/IO/Capture/Stdout.pm
+/usr/lib/perl5/vendor_perl/5.34.0/IO/Capture/Tie_STDx.pm
