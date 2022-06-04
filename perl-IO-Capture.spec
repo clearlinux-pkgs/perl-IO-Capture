@@ -4,7 +4,7 @@
 #
 Name     : perl-IO-Capture
 Version  : 0.05
-Release  : 23
+Release  : 24
 URL      : https://cpan.metacpan.org/authors/id/R/RE/REYNOLDS/IO-Capture-0.05.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RE/REYNOLDS/IO-Capture-0.05.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libi/libio-capture-perl/libio-capture-perl_0.05-4.debian.tar.xz
@@ -113,8 +113,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/IO/Capture.pm
-/usr/lib/perl5/vendor_perl/5.34.0/IO/Capture/Overview.pod
-/usr/lib/perl5/vendor_perl/5.34.0/IO/Capture/Stderr.pm
-/usr/lib/perl5/vendor_perl/5.34.0/IO/Capture/Stdout.pm
-/usr/lib/perl5/vendor_perl/5.34.0/IO/Capture/Tie_STDx.pm
+/usr/lib/perl5/*
